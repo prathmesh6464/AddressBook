@@ -14,7 +14,7 @@ public enum GetInstance {
 		return new Scanner(System.in);
 	}
 
-	public File getInstanceOfFile() {
+	public File getFileInstance() {
 
 		return new File(this.urlOfJsonFile);
 	}
