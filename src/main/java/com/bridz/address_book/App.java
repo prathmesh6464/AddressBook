@@ -8,6 +8,5 @@ public class App {
 
 		AddressBookController addressBook = new AddressBookController();
 		addressBook.start();
-
 	}
 }
