@@ -13,16 +13,20 @@ import java.util.Scanner;
 import java.io.InputStream;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.bridz.address_book.model.Person;
+import com.bridz.address_book.model.PersonDetailsSetter;
 
 public class AddressBookManager {
 
 	List<AddressBook> addressBookList = new ArrayList<AddressBook>();
 	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
 	File file = GetInstance.INSTANCE.getFileInstance();
+	PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
+
 	int chosedOption;
 	int idIndex = 1;
 
 	public void start() {
+
 		System.out.println("\n" + "*******Welcome to address book*******" + "\n");
 		System.out.println("Enter number to choose option");
 		System.out.println("1. Create address book");
@@ -38,29 +42,17 @@ public class AddressBookManager {
 		ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
 
 		switch (chosedOption) {
+
 		case 1:
+
 			System.out.println("Enter name for address book");
 			String nameOfAddressBook = scanner.next();
 			AddressBook addressBook = GetInstance.INSTANCE.getAddressBookInstance();
 			addressBook.setName(nameOfAddressBook);
 			addressBook.setId(idIndex);
 
-			Person pers = new Person();
-			pers.setId(idIndex);
-			pers.setAddress("ikasdfdsf");
-			pers.setCity("kadsf");
-			pers.setFirstName("klsdfj");
-			pers.setLastName("lastName");
-			pers.setZip("234");
-			pers.setState("sta");
-			pers.setPhoneNumber("erwtwer");
-
 			idIndex++;
 
-			List<Person> personList = new ArrayList<Person>();
-			personList.add(pers);
-			personList.add(pers);
-			addressBook.setPerson(personList);
 			addressBookList.add(addressBook);
 			try {
 				objectMapper.writeValue(file, addressBookList);
@@ -80,8 +72,8 @@ public class AddressBookManager {
 
 		case 2:
 
-			System.out.println("List of address book");
 			InputStream inputStream;
+
 			try {
 				inputStream = GetInstance.INSTANCE.getFileInputStreamInstance();
 				TypeReference<List<AddressBook>> typeReference = new TypeReference<List<AddressBook>>() {
@@ -92,11 +84,121 @@ public class AddressBookManager {
 				for (AddressBook eachAddressBook : addressBooks) {
 
 					System.out.println(eachAddressBook.getId() + " " + eachAddressBook.getName());
-					for (Person person : eachAddressBook.getPersons()) {
-						if (person.getCity().equals("kasf")) {
-							System.out.println(person.getCity());
-							System.out.println(person.getAddress());
+				}
+
+				System.out.println("\nSelect address book number for open person's list");
+				int chooseAddressBook = scanner.nextInt();
+				if (chooseAddressBook != 0) {
+
+					System.out.println("Choose one number for person details operation");
+					System.out.println("\n" + "*******Welcome to address book*******" + "\n");
+					System.out.println("1. Create person");
+					System.out.println("2. Open person");
+					System.out.println("3. Update person");
+					System.out.println("4. Delete person");
+					chosedOption = scanner.nextInt();
+
+				}
+
+				for (AddressBook eachAddressBook2 : addressBooks) {
+
+					if (eachAddressBook2.getId() == chooseAddressBook) {
+
+						switch (chosedOption) {
+
+						case 1:
+
+							eachAddressBook2.setPersons(personDetailsSetter.personDetailsSetter(idIndex));
+							idIndex++;
+							try {
+								objectMapper.writeValue(file, addressBooks);
+
+							} catch (Exception exception) {
+								exception.printStackTrace();
+							}
+							inputStream.close();
+							this.start();
+							break;
+
+						case 2:
+
+							for (Person person : eachAddressBook2.getPersons()) {
+
+								System.out.println("\n********** Person number : " + person.getId() + " **********\n");
+
+								System.out.println("First name   : " + person.getFirstName());
+								System.out.println("Last name    : " + person.getLastName());
+								System.out.println("Address      : " + person.getAddress());
+								System.out.println("City         : " + person.getCity());
+								System.out.println("State        : " + person.getState());
+								System.out.println("Zip          : " + person.getZip());
+								System.out.println("Phone number : " + person.getPhoneNumber());
+
+								System.out.println("\n********************************\n");
+							}
+
+							break;
+
+						case 3:
+
+							System.out.println("Please Enter person number to update.");
+
+							int updatePersonNumber = scanner.nextInt();
+
+							for (Person person : eachAddressBook2.getPersons()) {
+
+								if (person.getId() == updatePersonNumber) {
+
+									System.out.println("Please Enter person details to update.\n");
+									eachAddressBook2
+											.setPersons(personDetailsSetter.personDetailsSetter(updatePersonNumber));
+									objectMapper.writeValue(file, addressBooks);
+									System.out.println("Person details updated successfully!!");
+
+									this.start();
+									updatePersonNumber = -1;
+								}
+							}
+
+							if (updatePersonNumber != -1) {
+								System.out.println("Please enter valid number to update address book");
+								this.start();
+							}
+							inputStream.close();
+							break;
+
+						case 4:
+
+							System.out.println("Please Enter person number to delete.");
+
+							int deletePersonNumber = scanner.nextInt();
+
+							for (Person person : eachAddressBook2.getPersons()) {
+
+								if (person.getId() == deletePersonNumber) {
+
+									addressBooks.remove(person);
+									objectMapper.writeValue(file, addressBooks);
+									System.out.println("Person details deleted successfully!!");
+									inputStream.close();
+									this.start();
+									updatePersonNumber = -1;
+								}
+
+							}
+
+							if (deletePersonNumber != -1) {
+								System.out.println("Please enter valid number to delete person");
+								this.start();
+							}
+
+							break;
+
+						default:
+							System.out.println("Please enter valid option");
+
 						}
+
 					}
 				}
 
@@ -116,8 +218,11 @@ public class AddressBookManager {
 		case 3:
 
 			System.out.println("Please Enter address book number to update.");
+
 			int addressBookNumber = scanner.nextInt();
+
 			InputStream inputStreamToUpdate;
+
 			try {
 				inputStreamToUpdate = GetInstance.INSTANCE.getFileInputStreamInstance();
 				TypeReference<List<AddressBook>> typeReference = new TypeReference<List<AddressBook>>() {
@@ -138,12 +243,17 @@ public class AddressBookManager {
 						addressBookNumber = -1;
 					}
 				}
+
 				if (addressBookNumber != -1) {
 					System.out.println("Please enter valid number to update address book");
 					this.start();
 				}
+
 				inputStreamToUpdate.close();
-			} catch (Exception exception) {
+
+			} catch (
+
+			Exception exception) {
 				System.out.println(exception);
 				System.out.println("File not found!!");
 			}
@@ -153,8 +263,11 @@ public class AddressBookManager {
 		case 4:
 
 			System.out.println("Please Enter address book number to delete address book.");
+
 			int addressBookNumberToDelete = scanner.nextInt();
+
 			InputStream inputStreamToDelete;
+
 			try {
 				inputStreamToDelete = GetInstance.INSTANCE.getFileInputStreamInstance();
 				TypeReference<List<AddressBook>> typeReference = new TypeReference<List<AddressBook>>() {
@@ -173,11 +286,14 @@ public class AddressBookManager {
 						addressBookNumber = -1;
 					}
 				}
+
 				if (addressBookNumberToDelete != -1) {
 					System.out.println("Please enter valid number to update address book");
 					this.start();
 				}
+
 				inputStreamToDelete.close();
+
 			} catch (Exception exception) {
 				System.out.println(exception);
 				System.out.println("File not found!!");
