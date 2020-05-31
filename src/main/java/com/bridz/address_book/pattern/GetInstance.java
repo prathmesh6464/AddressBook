@@ -1,7 +1,14 @@
 package com.bridz.address_book.pattern;
 
 import java.util.Scanner;
+
+import com.bridz.address_book.model.AddressBook;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public enum GetInstance {
@@ -18,4 +25,18 @@ public enum GetInstance {
 
 		return new File(this.urlOfJsonFile);
 	}
+	
+	public AddressBook getAddressBookInstance() {
+		return new AddressBook();
+	}
+	
+	public ObjectMapper getObjectMapperInstance() {
+		return new ObjectMapper();
+	}
+	
+	public FileInputStream getFileInputStreamInstance() throws FileNotFoundException {
+		return 	new FileInputStream(this.getFileInstance());
+	}
 }
+
+
