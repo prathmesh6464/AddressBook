@@ -2,7 +2,6 @@ package com.bridz.address_book.service;
 
 import com.bridz.address_book.model.AddressBook;
 import com.bridz.address_book.pattern.GetInstance;
-import com.bridz.address_book.utility.PersonDetailsSetter;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -20,7 +19,6 @@ public class AddressBookManagerImplementation implements AddressBookManager {
 	private List<AddressBook> addressBookList = new ArrayList<AddressBook>();
 	private Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
 	private File file = GetInstance.INSTANCE.getFileInstance();
-	private PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
 	private DisplayPersonOperation displayPersonOperation = GetInstance.INSTANCE.getDisplayPersonOperationInstance();
 
 	private int chosedOption;
