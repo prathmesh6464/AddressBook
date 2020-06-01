@@ -17,14 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AddressBookManagerImplementation implements AddressBookManager {
 
-	List<AddressBook> addressBookList = new ArrayList<AddressBook>();
-	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
-	File file = GetInstance.INSTANCE.getFileInstance();
-	PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
-	DisplayPersonOperation displayPersonOperation = GetInstance.INSTANCE.getDisplayPersonOperationInstance();
+	private List<AddressBook> addressBookList = new ArrayList<AddressBook>();
+	private Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
+	private File file = GetInstance.INSTANCE.getFileInstance();
+	private PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
+	private DisplayPersonOperation displayPersonOperation = GetInstance.INSTANCE.getDisplayPersonOperationInstance();
 
-	int chosedOption;
-	int idIndex = 1;
+	private int chosedOption;
+	private int idIndex = 1;
 
 	public void displayAddressBookService() {
 
