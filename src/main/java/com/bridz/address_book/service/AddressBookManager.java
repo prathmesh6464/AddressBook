@@ -1,19 +1,20 @@
 package com.bridz.address_book.service;
 
+import com.bridz.address_book.model.AddressBook;
+import com.bridz.address_book.model.Person;
+import com.bridz.address_book.model.PersonDetailsSetter;
 import com.bridz.address_book.pattern.GetInstance;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-
-import com.bridz.address_book.model.AddressBook;
-import java.io.File;
 import java.util.Scanner;
+
+import java.io.File;
 import java.io.InputStream;
+
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.bridz.address_book.model.Person;
-import com.bridz.address_book.model.PersonDetailsSetter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AddressBookManager {
 
