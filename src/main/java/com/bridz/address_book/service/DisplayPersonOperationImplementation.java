@@ -145,7 +145,7 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 							if (person.getId() == updatePersonNumber) {
 
 								System.out.println("Please Enter person details to update.\n");
-								addressBooks.remove(updatePersonNumber);
+								eachAddressBook2.getPersons().remove(updatePersonNumber-1);
 								eachAddressBook2
 										.setPersons(personDetailsSetter.personDetailsSetter(updatePersonNumber));
 								objectMapper.writeValue(file, addressBooks);
