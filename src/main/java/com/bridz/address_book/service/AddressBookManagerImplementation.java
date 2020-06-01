@@ -1,9 +1,7 @@
 package com.bridz.address_book.service;
 
 import com.bridz.address_book.model.AddressBook;
-import com.bridz.address_book.pattern.AddressBookManager;
 import com.bridz.address_book.pattern.GetInstance;
-import com.bridz.address_book.utility.DisplayPersonOperation;
 import com.bridz.address_book.utility.PersonDetailsSetter;
 
 import java.util.ArrayList;
