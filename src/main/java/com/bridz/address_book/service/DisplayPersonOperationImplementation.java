@@ -43,7 +43,7 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 			if (addressBooks.isEmpty()) {
 
 				System.out.println("Address book is empty");
-				System.exit(0);
+				addressBookController.start();
 			}
 
 			for (AddressBook eachAddressBook : addressBooks) {
@@ -108,7 +108,7 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 						if (eachAddressBook2.getPersons().isEmpty()) {
 
 							System.out.println("Person list is empty");
-							System.exit(0);
+							addressBookController.start();
 						}
 
 						for (Person person : eachAddressBook2.getPersons()) {
