@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.bridz.address_book.model.AddressBook;
 import com.bridz.address_book.model.Person;
-import com.bridz.address_book.service.PersonManager;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +11,6 @@ import java.io.FileNotFoundException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.bridz.address_book.model.PersonDetailsSetter;
-import com.bridz.address_book.service.AddressBookManager;
 
 public enum GetInstance {
 
@@ -39,10 +37,6 @@ public enum GetInstance {
 
 	public ObjectMapper getObjectMapperInstance() {
 		return new ObjectMapper();
-	}
-
-	public PersonManager getPersonManagerInstance() {
-		return new PersonManager();
 	}
 
 	public PersonDetailsSetter getPersonDetailsSetterInstance() {
