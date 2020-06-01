@@ -2,8 +2,8 @@ package com.bridz.address_book.service;
 
 import com.bridz.address_book.model.AddressBook;
 import com.bridz.address_book.model.Person;
-import com.bridz.address_book.model.PersonDetailsSetter;
 import com.bridz.address_book.pattern.GetInstance;
+import com.bridz.address_book.utility.PersonDetailsSetter;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -196,8 +196,10 @@ public class AddressBookManager {
 							break;
 
 						default:
+
 							System.out.println("Please enter valid option");
 
+							break;
 						}
 
 					}
