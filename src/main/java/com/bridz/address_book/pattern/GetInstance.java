@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.bridz.address_book.controller.AddressBookController;
 import com.bridz.address_book.model.AddressBook;
 import com.bridz.address_book.model.Person;
-import com.bridz.address_book.utility.DisplayPersonOperation;
+import com.bridz.address_book.service.DisplayPersonOperationImplementation;
 import com.bridz.address_book.utility.PersonDetailsSetter;
 
 import java.io.File;
@@ -49,8 +49,8 @@ public enum GetInstance {
 		return new PersonDetailsSetter();
 	}
 	
-	public DisplayPersonOperation getDisplayPersonOperationInstance() {
-		return new DisplayPersonOperation();
+	public DisplayPersonOperationImplementation getDisplayPersonOperationInstance() {
+		return new DisplayPersonOperationImplementation();
 	}
 
 	public FileInputStream getFileInputStreamInstance() throws FileNotFoundException {
