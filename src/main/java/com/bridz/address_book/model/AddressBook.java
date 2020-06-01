@@ -5,9 +5,8 @@ import java.util.List;
 
 public class AddressBook {
 
-	String name;
 	long id;
-		
+	String name;
 	List<Person> persons = new ArrayList<>();
 
 	public String getName() {
@@ -34,12 +33,4 @@ public class AddressBook {
 		this.persons = persons;
 	}
 
-	public List<Person> getPerson() {
-		return this.persons;
-	}
-
-	public void setPerson(List<Person> person) {
-		this.persons = person;
-	}
-	
 }
