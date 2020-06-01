@@ -170,7 +170,5 @@ public class AddressBookManagerImplementation implements AddressBookManager {
 			break;
 
 		}
-
 	}
-
 }
