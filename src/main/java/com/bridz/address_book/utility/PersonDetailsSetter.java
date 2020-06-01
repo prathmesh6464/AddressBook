@@ -10,10 +10,10 @@ import com.bridz.address_book.pattern.GetInstance;
 
 public class PersonDetailsSetter {
 
-	List<Person> personList = new ArrayList<Person>();
-	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
-	File file = GetInstance.INSTANCE.getFileInstance();
-	int chooseNumber;
+	private List<Person> personList = new ArrayList<Person>();
+	private Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
+	private File file = GetInstance.INSTANCE.getFileInstance();
+	private int chooseNumber;
 
 	public List<Person> personDetailsSetter(int idIndex) {
 
