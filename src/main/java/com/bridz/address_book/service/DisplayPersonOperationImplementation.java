@@ -18,16 +18,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DisplayPersonOperationImplementation implements DisplayPersonOperation {
 
-	List<AddressBook> addressBookList = new ArrayList<AddressBook>();
-	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
-	File file = GetInstance.INSTANCE.getFileInstance();
-	PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
-	AddressBookController addressBookController = GetInstance.INSTANCE.getAddressBookControllerInstance();
+	private List<AddressBook> addressBookList = new ArrayList<AddressBook>();
+	private Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
+	private File file = GetInstance.INSTANCE.getFileInstance();
+	private PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
+	private AddressBookController addressBookController = GetInstance.INSTANCE.getAddressBookControllerInstance();
 
 	ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
 
-	int chosedOption;
-	int idIndex = 1;
+	private int chosedOption;
+	private int idIndex = 1;
 
 	public void displayPersonOperations() {
 
@@ -130,6 +130,8 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 
 					case 3:
 
+						int index2 = 0;
+						
 						System.out.println("Please Enter person number to update.");
 
 						int updatePersonNumber;
@@ -145,7 +147,7 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 							if (person.getId() == updatePersonNumber) {
 
 								System.out.println("Please Enter person details to update.\n");
-								eachAddressBook2.getPersons().remove(updatePersonNumber-1);
+								eachAddressBook2.getPersons().remove(index2);
 								eachAddressBook2
 										.setPersons(personDetailsSetter.personDetailsSetter(updatePersonNumber));
 								objectMapper.writeValue(file, addressBooks);
@@ -154,6 +156,8 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 								this.displayPersonOperations();
 								updatePersonNumber = -1;
 							}
+							
+							index2++;
 						}
 
 						if (updatePersonNumber != -1) {
