@@ -18,16 +18,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DisplayPersonOperationImplementation implements DisplayPersonOperation {
 
-	List<AddressBook> addressBookList = new ArrayList<AddressBook>();
-	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
-	File file = GetInstance.INSTANCE.getFileInstance();
-	PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
-	AddressBookController addressBookController = GetInstance.INSTANCE.getAddressBookControllerInstance();
+	private List<AddressBook> addressBookList = new ArrayList<AddressBook>();
+	private Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
+	private File file = GetInstance.INSTANCE.getFileInstance();
+	private PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
+	private AddressBookController addressBookController = GetInstance.INSTANCE.getAddressBookControllerInstance();
 
-	ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
+	private ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
 
-	int chosedOption;
-	int idIndex = 1;
+	private int chosedOption;
+	private int idIndex = 1;
 
 	public void displayPersonOperations() {
 
