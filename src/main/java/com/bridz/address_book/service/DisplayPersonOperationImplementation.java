@@ -24,7 +24,7 @@ public class DisplayPersonOperationImplementation implements DisplayPersonOperat
 	private PersonDetailsSetter personDetailsSetter = GetInstance.INSTANCE.getPersonDetailsSetterInstance();
 	private AddressBookController addressBookController = GetInstance.INSTANCE.getAddressBookControllerInstance();
 
-	ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
+	private ObjectMapper objectMapper = GetInstance.INSTANCE.getObjectMapperInstance();
 
 	private int chosedOption;
 	private int idIndex = 1;
