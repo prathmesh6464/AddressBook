@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 import com.bridz.address_book.model.AddressBook;
 import com.bridz.address_book.model.Person;
+import com.bridz.address_book.utility.PersonDetailsSetter;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.bridz.address_book.model.PersonDetailsSetter;
 
 public enum GetInstance {
 
