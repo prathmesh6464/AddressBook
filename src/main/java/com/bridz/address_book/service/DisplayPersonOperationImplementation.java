@@ -16,7 +16,7 @@ import com.bridz.address_book.exception.AddressBookException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DisplayPersonOperationImplementation {
+public class DisplayPersonOperationImplementation implements DisplayPersonOperation {
 
 	List<AddressBook> addressBookList = new ArrayList<AddressBook>();
 	Scanner scanner = GetInstance.INSTANCE.getScannerInstance();
